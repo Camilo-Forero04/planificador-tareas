@@ -1,0 +1,29 @@
+:root {
+  --bg: #F9F9F9;
+  --primary: #ef94be;
+  --secondary: #bf2d59;
+  --terciary: #653011;
+  --accent: #ec8744;
+  --text-color: #0b0c0c;
+  --font-title: "Righteous", sans-serif;
+  --font-text: "Sen", sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+}
+
+p {
+  font-family: var(--font-text);
+}
