@@ -23,8 +23,121 @@
     />
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <nav></nav>
-    <main class="container py-5 flex-grow-1"></main>
+    <!--navegacion-->
+    <nav class="navbar navbar-expand-lg fixed-top bg-pink ">
+      <div class="container">
+        <!-- 1er elemento-->
+        <a class="navbar-brand" href="#"
+          ><span class="fw-bold display-6 text-white">CAMI PLANS</span></a
+        >
+
+        <!-- responsive cel -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- 2ndo elemento -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Tareas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Logros</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--inicio pagina-->
+    <main class="container py-5 flex-grow-1">
+      <!--formulario-->
+      <section class="container mt-4 py-5 px-4 bg-black font-pink rounded-3">
+        <h2>CREA TU SMART</h2>
+        <div class="row">
+          <!-- columna 1 -->
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="inputObjetivo" class="form-label"
+                >¿Qué esperas <span class="fw-bold">lograr</span>?</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="inputObjetivo"
+                placeholder="Ej: Ser programador Fullstack"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="inputMetrica" class="form-label"
+                >¿Qué número o
+                <span class="fw-bold">métrica</span> utilizarás?</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="inputMetrica"
+                placeholder="Ej: 3 proyectos completados"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="inputAlcanzable" class="form-label"
+                >¿Es <span class="fw-bold">alcanzable</span> para ti?</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="inputAlcanzable"
+                placeholder="Ej: Sí, dedicando 2 horas al día"
+              />
+            </div>
+          </div>
+
+          <!-- columna 2 -->
+          <div class="col-md-6">
+            <div class="mb-1">
+              <label for="inputRelevante" class="form-label"
+                >¿Por qué te <span class="fw-bold">importa</span>?</label
+              >
+              <textarea
+                class="form-control"
+                id="inputRelevante"
+                rows="5"
+                placeholder="Justifica tu objetivo..."
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="inputTiempo" class="form-label"
+                >¿Cuál es el <span class="fw-bold">tiempo límite</span>?</label
+              >
+              <input type="date" class="form-control" id="inputTiempo" />
+            </div>
+
+            <!-- boton agregar -->
+            <div class="mt-4">
+              <button type="button" class="btn btn-primary rounded-5 fw-semibold">
+                Agregar Tarea
+              </button>
+            </div>
+            <!-- boton smart -->
+            <div class="mt-4">
+              <button type="button" class="btn btn-primary rounded-5 oculto">
+                Crear Smart
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Objetivos-->
+      <section></section>
+    </main>
+    <!--Logros-->
     <aside></aside>
 
     <footer></footer>

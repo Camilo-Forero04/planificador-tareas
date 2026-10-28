@@ -1,5 +1,5 @@
 :root {
-  --bg: #F9F9F9;
+  --bg: #f9f9f9;
   --primary: #ef94be;
   --secondary: #bf2d59;
   --terciary: #653011;
@@ -26,4 +26,41 @@ h6 {
 
 p {
   font-family: var(--font-text);
+}
+
+.font-pink {
+  color: var(--primary);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border: solid 2px var(--primary);
+  color: #000000;
+
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.bg-black {
+  background-color: var(--text-color) !important;
+}
+.bg-pink {
+  background-color: var(--primary) !important;
+}
+
+nav a {
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  transform: scale(1.10);
+}
+
+.oculto{
+  display: none;
 }
