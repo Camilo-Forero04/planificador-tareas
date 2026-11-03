@@ -24,7 +24,7 @@
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!--navegacion-->
-    <nav class="navbar navbar-expand-lg fixed-top bg-pink ">
+    <nav class="navbar navbar-expand-lg bg-pink">
       <div class="container">
         <!-- 1er elemento-->
         <a class="navbar-brand" href="#"
@@ -43,7 +43,6 @@
 
         <!-- 2ndo elemento -->
         <div class="collapse navbar-collapse" id="navbarNav">
-
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link text-white" href="#">Tareas</a>
@@ -121,7 +120,10 @@
 
             <!-- boton agregar -->
             <div class="mt-4">
-              <button type="button" class="btn btn-primary rounded-5 fw-semibold">
+              <button
+                type="button"
+                class="btn btn-primary rounded-5 fw-semibold"
+              >
                 Agregar Tarea
               </button>
             </div>
@@ -134,9 +136,171 @@
           </div>
         </div>
       </section>
-      <!--Objetivos-->
-      <section></section>
+
+      <!-- Objetivos -->
+      <section class="container d-grid mt-3 gap-3 bento-grid">
+        <!-- baja prioridad -->
+        <div
+          class="p-3 text-white card-custom border border-dark d-flex flex-column"
+        >
+          <h6 class="text-uppercase">objetivo #1</h6>
+          <div class="p-2 description-box d-flex flex-column">
+            <p class="mb-0">Terminar el planificador de tareas</p>
+            <div
+              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
+            >
+              <p class="fw-semibold mb-0 small text-white">03/11/26</p>
+            </div>
+          </div>
+          <div class="align-self-end mt-auto pt-2">
+            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
+          </div>
+        </div>
+
+        <!-- baja prioridad -->
+        <div
+          class="p-3 text-white card-custom border border-dark d-flex flex-column"
+        >
+          <h6 class="text-uppercase">objetivo #2</h6>
+          <div class="p-2 description-box d-flex flex-column">
+            <p class="mb-0">Terminar el planificador de tareas</p>
+            <div
+              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
+            >
+              <p class="fw-semibold mb-0 small text-white">
+                Fecha: En estos días xd
+              </p>
+            </div>
+          </div>
+          <div class="align-self-end mt-auto pt-2">
+            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
+          </div>
+        </div>
+
+        <!-- alta prioridad -->
+        <div
+          class="p-3 text-white card-custom border border-dark prioridad-maxima d-flex flex-column"
+        >
+          <h2 class="display-5 text-uppercase">objetivo #3</h2>
+          <div class="p-2 description-box d-flex flex-column h-100">
+            <p class="h2 mb-0">Terminar el planificador de tareas</p>
+            <div
+              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
+            >
+              <p class="fw-semibold mb-0 small text-white">
+                Fecha: En estos dias xd
+              </p>
+            </div>
+          </div>
+          <div class="align-self-end mt-auto pt-2">
+            <p class="fw-semibold mb-0 small text-uppercase">prioridad alta</p>
+          </div>
+        </div>
+
+        <!-- baja prioridad -->
+        <div
+          class="p-3 text-white card-custom border border-dark d-flex flex-column"
+        >
+          <h6 class="text-uppercase">objetivo #4</h6>
+          <div class="p-2 description-box d-flex flex-column">
+            <p class="mb-0">Terminar el planificador de tareas</p>
+            <div
+              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
+            >
+              <p class="fw-semibold mb-0 small text-white">
+                Fecha: En estos dias xd
+              </p>
+            </div>
+          </div>
+          <div class="align-self-end mt-auto pt-2">
+            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
+          </div>
+        </div>
+
+        <!-- Fila 2 -->
+        <!-- prioridad media ancha -->
+        <div
+          class="p-3 text-white card-custom border border-dark prioridad-media-ancha d-flex flex-column"
+        >
+          <h4 class="text-uppercase">objetivo #5</h4>
+          <div class="p-2 description-box d-flex flex-column">
+            <p class="h5 mb-0">Terminar el planificador de tareas</p>
+            <div
+              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
+            >
+              <p class="fw-semibold mb-0 small text-white">
+                Fecha: En estos dias xd
+              </p>
+            </div>
+          </div>
+          <div class="align-self-end mt-auto pt-2">
+            <p class="fw-semibold mb-0 small text-uppercase">prioridad media</p>
+          </div>
+        </div>
+
+        <!-- prioridad media alta -->
+        <div
+          class="p-3 text-white card-custom border border-dark prioridad-media-alta d-flex flex-column"
+        >
+          <h4 class="text-uppercase">objetivo #6</h4>
+          <div class="p-2 description-box d-flex flex-column h-100">
+            <p class="h5 mb-0">Terminar el planificador de tareas</p>
+            <div
+              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
+            >
+              <p class="fw-semibold mb-0 small text-white">
+                Fecha: En estos dias xd
+              </p>
+            </div>
+          </div>
+          <div class="align-self-end mt-auto pt-2">
+            <p class="fw-semibold mb-0 small text-uppercase">prioridad media</p>
+          </div>
+        </div>
+
+        <!-- Fila 3 -->
+        <!-- baja prioridad -->
+        <div
+          class="p-3 text-white card-custom border border-dark d-flex flex-column"
+        >
+          <h6 class="text-uppercase">objetivo #7</h6>
+          <div class="p-2 description-box d-flex flex-column">
+            <p class="mb-0">Terminar el planificador de tareas</p>
+            <div
+              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
+            >
+              <p class="fw-semibold mb-0 small text-white">
+                Fecha: En estos dias xd
+              </p>
+            </div>
+          </div>
+          <div class="align-self-end mt-auto pt-2">
+            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
+          </div>
+        </div>
+
+        <!-- baja prioridad -->
+        <div
+          class="p-3 text-white card-custom border border-dark d-flex flex-column"
+        >
+          <h6 class="text-uppercase">objetivo #8</h6>
+          <div class="p-2 description-box d-flex flex-column">
+            <p class="mb-0">Terminar el planificador de tareas</p>
+            <div
+              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
+            >
+              <p class="fw-semibold mb-0 small text-white">
+                Fecha: En estos dias xd
+              </p>
+            </div>
+          </div>
+          <div class="align-self-end mt-auto pt-2">
+            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
+          </div>
+        </div>
+      </section>
     </main>
+
     <!--Logros-->
     <aside></aside>
 

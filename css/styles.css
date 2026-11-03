@@ -50,7 +50,7 @@ p {
   background-color: var(--text-color) !important;
 }
 .bg-pink {
-  background-color: var(--primary) !important;
+  background-color: var(--secondary) !important;
 }
 
 nav a {
@@ -58,9 +58,51 @@ nav a {
 }
 
 nav a:hover {
-  transform: scale(1.10);
+  transform: scale(1.1);
 }
 
-.oculto{
+.oculto {
   display: none;
+}
+
+.card-custom {
+  background-color: var(--secondary);
+}
+
+.bento-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);/* se reparten 2 cards a lo ancho del celu */
+  grid-auto-rows: minmax(120px, auto);  /* minmax para que en telefono la card crezca sola */
+}
+
+.prioridad-maxima {
+  grid-column: span 2; /*ocupa 2 cards de ancho*/
+  grid-row: span 3; /*ocupa 3 cards de alto*/
+}
+.prioridad-media-ancha {
+  grid-column: span 2; /*ocupa 2 cards a lo ancho*/
+  grid-row: span 1; /*ocupa 1 card a lo alto*/
+}
+.prioridad-media-alta {
+  grid-column: span 1; /*ocupa 1 cards a lo ancho*/
+  grid-row: span 2; /*ocupa 2 cards a lo alto*/
+}
+
+/* Expansión a 5 columnas en pantallas grandes */
+@media (min-width: 992px) {
+  .bento-grid {
+    grid-template-columns: repeat(5, 1fr); /* se reparten 5 cards a lo ancho de la pantalla */
+    grid-auto-rows: minmax(250px, auto); /* minmax para que en desktop la card crezca sola */
+  }
+}
+
+.description-box {
+  background-color: var(--primary);
+  color: var(--text-color);
+  border-radius: 12px;
+}
+
+.deadline {
+  background-color: var(--accent);
 }
