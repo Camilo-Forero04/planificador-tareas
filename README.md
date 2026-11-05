@@ -1,6 +1,20 @@
-# Planificador de Tareas
+# CAMI PLANS
 
-Un planificador de tareas basado en el sistema SMART (Especifico, Medible, Alcanzable, Relevante, Tiempo), con historial y visualización de logros completados. 
+Una app web de productividad diseñada para vencer la procrastinación: exige crear al menos una tarea por cada objetivo SMART definido.
+
+## Características Principales
+
+* **Gestión centralizada:** Formulario guiado para metas y un tablero visual que destaca las tareas según su prioridad.
+* **Interacción ágil:** Creación y lectura de tareas mediante ventanas modales para mantener el enfoque sin recargar la página.
+* **Impulso a la acción:** Validaciones visuales (termómetro de llenado) y un "contrato psicológico" para arrancar rápido.
+* **Tablero de prioridades:** Interfaz que organiza las tareas por fechas límite y destaca por tamaño las de prioridad alta.
+
+## Tecnologías Utilizadas
+
+* HTML5
+* CSS3
+* JavaScript (Vanilla)
+* Bootstrap (UI y Modales) 
 
 ## Autor
 
