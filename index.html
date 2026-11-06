@@ -23,15 +23,12 @@
     />
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <!--navegacion-->
+    <!-- Navegación -->
     <nav class="navbar navbar-expand-lg bg-pink">
       <div class="container">
-        <!-- 1er elemento-->
-        <a class="navbar-brand" href="#"
-          ><span class="fw-bold display-6 text-white">CAMI PLANS</span></a
-        >
-
-        <!-- responsive cel -->
+        <a class="navbar-brand" href="#">
+          <span class="fw-bold display-6 text-white">CAMI PLANS</span>
+        </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -40,8 +37,6 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <!-- 2ndo elemento -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -54,18 +49,20 @@
         </div>
       </div>
     </nav>
-    <!--inicio pagina-->
+
+    <!-- Inicio página -->
     <main class="container py-5 flex-grow-1">
-      <!--formulario-->
+      <!-- Formulario SMART -->
       <section class="container mt-4 py-5 px-4 bg-black font-pink rounded-3">
         <h2>CREA TU SMART</h2>
+        <div id="alertaSmart" class="mt-2"></div>
         <div class="row">
-          <!-- columna 1 -->
+          <!-- Columna 1 -->
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="inputObjetivo" class="form-label"
-                >¿Qué esperas <span class="fw-bold">lograr</span>?</label
-              >
+              <label for="inputObjetivo" class="form-label">
+                ¿Qué esperas <span class="fw-bold">lograr</span>?
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -74,10 +71,9 @@
               />
             </div>
             <div class="mb-3">
-              <label for="inputMetrica" class="form-label"
-                >¿Qué número o
-                <span class="fw-bold">métrica</span> utilizarás?</label
-              >
+              <label for="inputMetrica" class="form-label">
+                ¿Qué número o <span class="fw-bold">métrica</span> utilizarás?
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -86,9 +82,9 @@
               />
             </div>
             <div class="mb-3">
-              <label for="inputAlcanzable" class="form-label"
-                >¿Es <span class="fw-bold">alcanzable</span> para ti?</label
-              >
+              <label for="inputAlcanzable" class="form-label">
+                ¿Es <span class="fw-bold">alcanzable</span> para ti?
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -98,38 +94,53 @@
             </div>
           </div>
 
-          <!-- columna 2 -->
+          <!-- Columna 2 -->
           <div class="col-md-6">
-            <div class="mb-1">
-              <label for="inputRelevante" class="form-label"
-                >¿Por qué te <span class="fw-bold">importa</span>?</label
-              >
+            <div class="mb-3">
+              <label for="inputRelevante" class="form-label">
+                ¿Por qué te <span class="fw-bold">importa</span>?
+              </label>
               <textarea
                 class="form-control"
                 id="inputRelevante"
-                rows="5"
-                placeholder="Justifica tu objetivo..."
+                rows="4"
+                placeholder="Justifica tu objetivo... (Mientras más escribas, mayor prioridad tendrá)"
               ></textarea>
+              <!-- Termómetro de prioridad -->
+              <div class="progress mt-2" style="height: 8px">
+                <div
+                  id="barraPrioridad"
+                  class="progress-bar bg-secondary"
+                  role="progressbar"
+                  style="width: 15%"
+                ></div>
+              </div>
+              <small id="textoPrioridadDetectada" class="text-white-50">
+                Prioridad detectada: Baja (0 caracteres)
+              </small>
             </div>
-            <div class="mb-3">
-              <label for="inputTiempo" class="form-label"
-                >¿Cuál es el <span class="fw-bold">tiempo límite</span>?</label
-              >
+
+            <div class="mb-1">
+              <label for="inputTiempo" class="form-label">
+                ¿Cuál es el <span class="fw-bold">tiempo límite</span>?
+              </label>
               <input type="date" class="form-control" id="inputTiempo" />
             </div>
 
-            <!-- boton agregar -->
-            <div class="mt-4">
+            <!-- Botones -->
+            <div class="mt-4 d-flex gap-2 flex-wrap">
               <button
                 type="button"
+                id="btnAbrirModalTarea"
                 class="btn btn-primary rounded-5 fw-semibold"
               >
-                Agregar Tarea
+                + Agregar Tarea (<span id="contadorTareas">0</span>)
               </button>
-            </div>
-            <!-- boton smart -->
-            <div class="mt-4">
-              <button type="button" class="btn btn-primary rounded-5 oculto">
+              <button
+                type="button"
+                id="btnCrearSmart"
+                class="btn btn-primary rounded-5 fw-semibold oculto"
+              >
                 Crear Smart
               </button>
             </div>
@@ -137,179 +148,110 @@
         </div>
       </section>
 
-      <!-- Objetivos -->
-      <section class="container d-grid mt-3 gap-3 bento-grid">
-        <!-- baja prioridad -->
-        <div
-          class="p-3 text-white card-custom border border-dark d-flex flex-column"
-        >
-          <h6 class="text-uppercase">objetivo #1</h6>
-          <div class="p-2 description-box d-flex flex-column">
-            <p class="mb-0">Terminar el planificador de tareas</p>
-            <div
-              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
-            >
-              <p class="fw-semibold mb-0 small text-white">03/11/26</p>
-            </div>
-          </div>
-          <div class="align-self-end mt-auto pt-2">
-            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
-          </div>
-        </div>
-
-        <!-- baja prioridad -->
-        <div
-          class="p-3 text-white card-custom border border-dark d-flex flex-column"
-        >
-          <h6 class="text-uppercase">objetivo #2</h6>
-          <div class="p-2 description-box d-flex flex-column">
-            <p class="mb-0">Terminar el planificador de tareas</p>
-            <div
-              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
-            >
-              <p class="fw-semibold mb-0 small text-white">
-                Fecha: En estos días xd
-              </p>
-            </div>
-          </div>
-          <div class="align-self-end mt-auto pt-2">
-            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
-          </div>
-        </div>
-
-        <!-- alta prioridad -->
-        <div
-          class="p-3 text-white card-custom border border-dark prioridad-maxima d-flex flex-column"
-        >
-          <h2 class="display-5 text-uppercase">objetivo #3</h2>
-          <div class="p-2 description-box d-flex flex-column h-100">
-            <p class="h2 mb-0">Terminar el planificador de tareas</p>
-            <div
-              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
-            >
-              <p class="fw-semibold mb-0 small text-white">
-                Fecha: En estos dias xd
-              </p>
-            </div>
-          </div>
-          <div class="align-self-end mt-auto pt-2">
-            <p class="fw-semibold mb-0 small text-uppercase">prioridad alta</p>
-          </div>
-        </div>
-
-        <!-- baja prioridad -->
-        <div
-          class="p-3 text-white card-custom border border-dark d-flex flex-column"
-        >
-          <h6 class="text-uppercase">objetivo #4</h6>
-          <div class="p-2 description-box d-flex flex-column">
-            <p class="mb-0">Terminar el planificador de tareas</p>
-            <div
-              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
-            >
-              <p class="fw-semibold mb-0 small text-white">
-                Fecha: En estos dias xd
-              </p>
-            </div>
-          </div>
-          <div class="align-self-end mt-auto pt-2">
-            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
-          </div>
-        </div>
-
-        <!-- Fila 2 -->
-        <!-- prioridad media ancha -->
-        <div
-          class="p-3 text-white card-custom border border-dark prioridad-media-ancha d-flex flex-column"
-        >
-          <h4 class="text-uppercase">objetivo #5</h4>
-          <div class="p-2 description-box d-flex flex-column">
-            <p class="h5 mb-0">Terminar el planificador de tareas</p>
-            <div
-              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
-            >
-              <p class="fw-semibold mb-0 small text-white">
-                Fecha: En estos dias xd
-              </p>
-            </div>
-          </div>
-          <div class="align-self-end mt-auto pt-2">
-            <p class="fw-semibold mb-0 small text-uppercase">prioridad media</p>
-          </div>
-        </div>
-
-        <!-- prioridad media alta -->
-        <div
-          class="p-3 text-white card-custom border border-dark prioridad-media-alta d-flex flex-column"
-        >
-          <h4 class="text-uppercase">objetivo #6</h4>
-          <div class="p-2 description-box d-flex flex-column h-100">
-            <p class="h5 mb-0">Terminar el planificador de tareas</p>
-            <div
-              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
-            >
-              <p class="fw-semibold mb-0 small text-white">
-                Fecha: En estos dias xd
-              </p>
-            </div>
-          </div>
-          <div class="align-self-end mt-auto pt-2">
-            <p class="fw-semibold mb-0 small text-uppercase">prioridad media</p>
-          </div>
-        </div>
-
-        <!-- Fila 3 -->
-        <!-- baja prioridad -->
-        <div
-          class="p-3 text-white card-custom border border-dark d-flex flex-column"
-        >
-          <h6 class="text-uppercase">objetivo #7</h6>
-          <div class="p-2 description-box d-flex flex-column">
-            <p class="mb-0">Terminar el planificador de tareas</p>
-            <div
-              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
-            >
-              <p class="fw-semibold mb-0 small text-white">
-                Fecha: En estos dias xd
-              </p>
-            </div>
-          </div>
-          <div class="align-self-end mt-auto pt-2">
-            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
-          </div>
-        </div>
-
-        <!-- baja prioridad -->
-        <div
-          class="p-3 text-white card-custom border border-dark d-flex flex-column"
-        >
-          <h6 class="text-uppercase">objetivo #8</h6>
-          <div class="p-2 description-box d-flex flex-column">
-            <p class="mb-0">Terminar el planificador de tareas</p>
-            <div
-              class="deadline rounded-4 text-center p-2 mt-auto align-self-end"
-            >
-              <p class="fw-semibold mb-0 small text-white">
-                Fecha: En estos dias xd
-              </p>
-            </div>
-          </div>
-          <div class="align-self-end mt-auto pt-2">
-            <p class="fw-semibold mb-0 small text-uppercase">prioridad baja</p>
-          </div>
-        </div>
+      <!-- Grilla Bento de Objetivos -->
+      <section id="contenedorObjetivos" class="container mt-4 bento-grid">
+        <!-- Las tarjetas se generan aquí con JS -->
       </section>
+
+      <!-- MODAL 1: Agregar Tarea -->
+      <div
+        class="modal fade"
+        id="modalCrearTarea"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-black font-pink border-light">
+            <div class="modal-header border-secondary">
+              <h5 class="modal-title">Asignar Tarea al Objetivo</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <!-- El alertaTarea va aquí adentro, al inicio del body -->
+            <div class="modal-body">
+              <div id="alertaTarea"></div>
+
+              <div class="mb-3">
+                <label class="form-label">Plantilla rápida (Opcional)</label>
+                <select id="selectVerbo" class="form-select mb-3">
+                  <option value="">-- Elige un verbo para arrancar --</option>
+                  <option value="Investigar sobre ">Investigar sobre...</option>
+                  <option value="Dedicar 1 hora a ">Dedicar 1 hora a...</option>
+                  <option value="Bocetar o estructurar ">
+                    Bocetar o estructurar...
+                  </option>
+                </select>
+                <label for="inputDescTarea" class="form-label"
+                  >¿Cuál es la tarea?</label
+                >
+                <input
+                  type="text"
+                  id="inputDescTarea"
+                  class="form-control"
+                  placeholder="Ej: Maquetar el formulario en HTML"
+                />
+              </div>
+              <div class="form-check mt-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="checkContrato"
+                />
+                <label
+                  class="form-check-label text-white small"
+                  for="checkContrato"
+                >
+                  Me comprometo a empezar esta tarea en las próximas 48 horas.
+                </label>
+              </div>
+            </div>
+            <div class="modal-footer border-secondary">
+              <button
+                type="button"
+                id="btnGuardarTarea"
+                class="btn btn-primary rounded-5"
+              >
+                Guardar Tarea
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL 2: Visualizar Objetivo y sus Tareas -->
+      <div
+        class="modal fade"
+        id="modalVerSmart"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-black font-pink border-light">
+            <div class="modal-header border-secondary">
+              <h5 class="modal-title" id="tituloModalVer">
+                Detalle del Objetivo
+              </h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body text-white" id="cuerpoModalVer"></div>
+          </div>
+        </div>
+      </div>
     </main>
 
-    <!--Logros-->
-    <aside></aside>
-
-    <footer></footer>
-    <script src="./js/script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>

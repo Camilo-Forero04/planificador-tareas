@@ -67,13 +67,22 @@ nav a:hover {
 
 .card-custom {
   background-color: var(--secondary);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .bento-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);/* se reparten 2 cards a lo ancho del celu */
-  grid-auto-rows: minmax(120px, auto);  /* minmax para que en telefono la card crezca sola */
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 1fr)
+  ); /* se reparten 2 cards a lo ancho del celu */
+  grid-auto-rows: minmax(
+    120px,
+    auto
+  ); /* minmax para que en telefono la card crezca sola */
+  align-items: stretch;
 }
 
 .prioridad-maxima {
@@ -89,11 +98,22 @@ nav a:hover {
   grid-row: span 2; /*ocupa 2 cards a lo alto*/
 }
 
+.prioridad-baja {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
 /* Expansión a 5 columnas en pantallas grandes */
-@media (min-width: 992px) {
+@media (min-width: 576px) {
   .bento-grid {
-    grid-template-columns: repeat(5, 1fr); /* se reparten 5 cards a lo ancho de la pantalla */
-    grid-auto-rows: minmax(250px, auto); /* minmax para que en desktop la card crezca sola */
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    ); /* se reparten 5 cards a lo ancho de la pantalla */
+    grid-auto-rows: minmax(
+      250px,
+      auto
+    ); /* minmax para que en desktop la card crezca sola */
   }
 }
 
