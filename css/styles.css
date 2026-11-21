@@ -1,8 +1,9 @@
 :root {
   --bg: #f9f9f9;
+  --surface-dark: #1b1d1f;
+  --board-bg: #141618;
   --primary: #ef94be;
   --secondary: #bf2d59;
-  --terciary: #653011;
   --accent: #ec8744;
   --text-color: #0b0c0c;
   --font-title: "Righteous", sans-serif;
@@ -13,6 +14,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: var(--bg);
 }
 
 h1,
@@ -36,7 +38,6 @@ p {
   background-color: var(--primary);
   border: solid 2px var(--primary);
   color: #000000;
-
   transition: all 0.3s ease;
 }
 
@@ -49,8 +50,15 @@ p {
 .bg-black {
   background-color: var(--text-color) !important;
 }
+
 .bg-pink {
   background-color: var(--secondary) !important;
+  border-bottom: 3px dashed rgba(239, 148, 190, 0.6);
+}
+
+.bg-brown {
+  background-color: var(--surface-dark) !important;
+  border: 1px solid rgba(239, 148, 190, 0.25);
 }
 
 nav a {
@@ -65,37 +73,137 @@ nav a:hover {
   display: none;
 }
 
-.card-custom {
-  background-color: var(--secondary);
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
+/*grilla*/
 .bento-grid {
+  --columnas: 2;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(
-    3,
-    minmax(0, 1fr)
-  ); /* se reparten 2 cards a lo ancho del celu */
-  grid-auto-rows: minmax(
-    120px,
-    auto
-  ); /* minmax para que en telefono la card crezca sola */
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background-color: var(--board-bg);
+  background-image: radial-gradient(
+    rgba(239, 148, 190, 0.16) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 22px 22px;
+  border: 2px solid #26292d;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.65);
+  grid-template-columns: repeat(var(--columnas), minmax(0, 1fr));
+  grid-auto-rows: minmax(190px, auto);
+  grid-auto-flow: dense;
   align-items: stretch;
 }
 
+@media (min-width: 577px) {
+  .bento-grid {
+    --columnas: 3;
+    grid-auto-rows: minmax(220px, auto);
+  }
+}
+
+/*tablero*/
+.card-custom {
+  position: relative;
+  background-color: var(--secondary);
+  border-radius: 6px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  padding-top: 1.75rem !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+/* pin */
+.card-custom::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff, #e6dce0 60%, #8c7a82);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.55);
+  z-index: 2;
+}
+
+
+@media (min-width: 577px) {
+  .card-custom {
+    --giro: 1deg;
+    --dir: 1;
+    transform: rotate(calc(var(--giro) * var(--dir)));
+  }
+
+  .card-custom:nth-child(odd) {
+    --dir: -1;
+  }
+
+  .card-custom:nth-child(3n) {
+    --giro: 0.6deg;
+    --dir: -1;
+  }
+
+  .prioridad-media-ancha,
+  .prioridad-maxima {
+    --giro: 0.4deg;
+  }
+
+  .card-custom:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.6);
+    z-index: 3;
+  }
+}
+
+.card-custom:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* sello caso */
+.card-custom.caso-cerrado {
+  opacity: 0.82;
+}
+
+.card-custom.caso-cerrado::after {
+  content: "CASO CERRADO";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  padding: 0.25rem 0.75rem;
+  border: 3px solid #198754;
+  border-radius: 4px;
+  background-color: rgba(11, 12, 12, 0.85);
+  color: #4ade80;
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+
 .prioridad-maxima {
-  grid-column: span 2; /*ocupa 2 cards de ancho*/
-  grid-row: span 3; /*ocupa 3 cards de alto*/
+  grid-column: span 2;
+  grid-row: span 2;
 }
+
 .prioridad-media-ancha {
-  grid-column: span 2; /*ocupa 2 cards a lo ancho*/
-  grid-row: span 1; /*ocupa 1 card a lo alto*/
+  grid-column: span 2;
+  grid-row: span 1;
 }
+
 .prioridad-media-alta {
-  grid-column: span 1; /*ocupa 1 cards a lo ancho*/
-  grid-row: span 2; /*ocupa 2 cards a lo alto*/
+  grid-column: span 1;
+  grid-row: span 2;
 }
 
 .prioridad-baja {
@@ -103,26 +211,50 @@ nav a:hover {
   grid-row: span 1;
 }
 
-/* Expansión a 5 columnas en pantallas grandes */
-@media (min-width: 576px) {
-  .bento-grid {
-    grid-template-columns: repeat(
-      2,
-      minmax(0, 1fr)
-    ); /* se reparten 5 cards a lo ancho de la pantalla */
-    grid-auto-rows: minmax(
-      250px,
-      auto
-    ); /* minmax para que en desktop la card crezca sola */
-  }
-}
 
 .description-box {
-  background-color: var(--primary);
+  background-color: var(--bg);
   color: var(--text-color);
-  border-radius: 12px;
+  border-radius: 6px;
 }
 
 .deadline {
   background-color: var(--accent);
+  color: var(--text-color);
+  border-radius: 3px !important;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* aside*/
+.logros-panel {
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+
+@media (min-width: 992px) {
+  #logros {
+    align-self: flex-start;
+    position: sticky;
+    top: 1rem;
+  }
+}
+
+.logro-card {
+  background-color: var(--bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 0.75rem 1.75rem 0.75rem !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  overflow-wrap: anywhere;
+  transition: transform 0.2s ease;
+}
+
+.logro-card:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.logro-icono {
+  color: var(--secondary);
 }
