@@ -1,7 +1,6 @@
 "use strict";
 
 const taskManager = new TaskManager();
-console.log(taskManager.tasks);
 
 function validFormFieldInput(data) {
   return (
@@ -36,19 +35,31 @@ document.addEventListener("DOMContentLoaded", () => {
     ocultarAlerta();
 
     taskManager.addTask(name.trim(), description.trim(), dueDate, "PORHACER");
-    console.log(taskManager.tasks);
+    taskManager.save();
 
     newTaskForm.reset();
+
     renderizarTareas();
   });
 
   contenedorObjetivos.addEventListener("click", (event) => {
     const btnToggle = event.target.closest("[data-action='toggle-status']");
-    if (!btnToggle) return;
+    if (btnToggle) {
+      const id = Number(btnToggle.dataset.taskId);
+      taskManager.toggleTaskStatus(id);
+      taskManager.save();
+      renderizarTareas();
+      return;
+    }
 
-    const id = btnToggle.dataset.taskId;
-    taskManager.toggleTaskStatus(id);
-    renderizarTareas();
+    const btnDelete = event.target.closest(".delete-button");
+    if (btnDelete) {
+      const parentTask = btnDelete.closest("[data-task-id]");
+      const taskId = Number(parentTask.dataset.taskId);
+      taskManager.deleteTask(taskId);
+      taskManager.save();
+      renderizarTareas();
+    }
   });
 
   function mostrarAlerta(mensaje, tipo = "danger") {
@@ -77,8 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const textoEstado = ETIQUETA_ESTADO[task.status] || task.status;
         const fechaTexto = formatearFechaHumana(task.dueDate);
 
-        return `
-        <div class="p-3 text-white card-custom border ${
+                return `
+        <div data-task-id="${task.id}" class="p-3 text-white card-custom border ${
           completada ? "border-success caso-cerrado" : "border-dark"
         } d-flex flex-column ${claseBento}">
           <h6 class="h6 mb-2 ${completada ? "text-decoration-line-through" : ""}">
@@ -107,10 +118,18 @@ document.addEventListener("DOMContentLoaded", () => {
               <i class="fa-${completada ? "solid fa-circle-check" : "regular fa-circle"}"></i>
               ${completada ? "Completada" : "Marcar completada"}
             </button>
+            <button
+              type="button"
+              class="delete-button btn btn-sm btn-danger rounded-5"
+            >
+              <i class="fa-solid fa-trash"></i> Eliminar
+            </button>
           </div>
         </div>
       `;
       })
       .join("");
   }
+      taskManager.load();
+      renderizarTareas();
 });
